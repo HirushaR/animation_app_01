@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 
 void main() => runApp(MyApp());
 
@@ -15,27 +16,7 @@ class LoginScreen  extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Item1'),
-              onTap: (){},
-            ),
-            ListTile(
-              title: Text('Item2'),
-              onTap: (){},
-            )
-          ],
-        ),
-      ),
+    
       appBar: AppBar(
         title: Text('ANIMATIOn'),
         
@@ -48,6 +29,31 @@ class LoginScreen  extends StatelessWidget {
           },
         ),
         
+      ),
+        drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Icon(Icons.search),
+              onTap: (){
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('page2'),
+              onTap: (){
+                 Navigator.of(context).push(_createRoute());
+              },
+            )
+          ],
+        ),
       ),
     );
   }
@@ -79,8 +85,27 @@ class Page2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Text('Page 2'),
+      body: SnackBarPage(),
+    );
+  }
+}
+
+class SnackBarPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: RaisedButton(
+        onPressed: (){
+          final SnackBar = prefix0.SnackBar(
+            content: Text('Yey'),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: (){},
+            ),
+          );
+          Scaffold.of(context).showSnackBar(SnackBar);
+        },
+        child: Text('show Snackbar'),
       ),
     );
   }
