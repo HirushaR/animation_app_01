@@ -15,8 +15,12 @@ class LoginScreen  extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        
+      ),
       appBar: AppBar(
         title: Text('ANIMATIOn'),
+        
       ),
       body: Center(
         child: RaisedButton(
