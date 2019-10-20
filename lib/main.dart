@@ -16,7 +16,25 @@ class LoginScreen  extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Item1'),
+              onTap: (){},
+            ),
+            ListTile(
+              title: Text('Item2'),
+              onTap: (){},
+            )
+          ],
+        ),
       ),
       appBar: AppBar(
         title: Text('ANIMATIOn'),
